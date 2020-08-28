@@ -1,27 +1,30 @@
-Microsoft (R) Macro Assembler Version 14.27.29111.0	    08/28/20 21:41:29
-AddTwo.asm						     Page 1 - 1
+Microsoft (R) Macro Assembler Version 14.27.29111.0	    08/28/20 21:46:00
+AddTwoSum.asm						     Page 1 - 1
 
 
-				; AddTwo.asm - adds two 32-bit integers.
-				; Chapter 3 example
+				; AddTwoSum.asm - Chapter 3 example.
 
 				.386
 				.model flat,stdcall
 				.stack 4096
 				ExitProcess proto,dwExitCode:dword
 
+ 00000000			.data
+ 00000000 00000000		sum dword 0
+
  00000000			.code
  00000000			main proc
  00000000  B8 00000005			mov	eax,5				
  00000005  83 C0 06			add	eax,6				
+ 00000008  A3 00000000 R		mov sum,eax
 
 					invoke ExitProcess,0
- 00000008  6A 00	   *	    push   +000000000h
- 0000000A  E8 00000000 E   *	    call   ExitProcess
- 0000000F			main endp
+ 0000000D  6A 00	   *	    push   +000000000h
+ 0000000F  E8 00000000 E   *	    call   ExitProcess
+ 00000014			main endp
 				end main
-Microsoft (R) Macro Assembler Version 14.27.29111.0	    08/28/20 21:41:29
-AddTwo.asm						     Symbols 2 - 1
+Microsoft (R) Macro Assembler Version 14.27.29111.0	    08/28/20 21:46:00
+AddTwoSum.asm						     Symbols 2 - 1
 
 
 
@@ -32,8 +35,8 @@ Segments and Groups:
 
 FLAT . . . . . . . . . . . . . .	GROUP
 STACK  . . . . . . . . . . . . .	32 Bit	 00001000 DWord	  Stack	  'STACK'	 
-_DATA  . . . . . . . . . . . . .	32 Bit	 00000000 DWord	  Public  'DATA'	
-_TEXT  . . . . . . . . . . . . .	32 Bit	 0000000F DWord	  Public  'CODE'	
+_DATA  . . . . . . . . . . . . .	32 Bit	 00000004 DWord	  Public  'DATA'	
+_TEXT  . . . . . . . . . . . . .	32 Bit	 00000014 DWord	  Public  'CODE'	
 
 
 Procedures, parameters, and locals:
@@ -41,7 +44,7 @@ Procedures, parameters, and locals:
                 N a m e                 Type     Value    Attr
 
 ExitProcess  . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
-main . . . . . . . . . . . . . .	P Near	 00000000 _TEXT	Length= 0000000F Public STDCALL
+main . . . . . . . . . . . . . .	P Near	 00000000 _TEXT	Length= 00000014 Public STDCALL
 
 
 Symbols:
@@ -57,6 +60,7 @@ Symbols:
 @fardata?  . . . . . . . . . . .	Text   	 FLAT
 @fardata . . . . . . . . . . . .	Text   	 FLAT
 @stack . . . . . . . . . . . . .	Text   	 FLAT
+sum  . . . . . . . . . . . . . .	DWord	 00000000 _DATA	
 
 	   0 Warnings
 	   0 Errors
