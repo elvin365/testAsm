@@ -1,6 +1,6 @@
 ; AddTwo.asm - adds two 32-bit integers.
 ; Chapter 3 example
-;kek
+
 .386
 .model flat,stdcall
 .stack 4096
